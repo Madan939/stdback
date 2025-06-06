@@ -1,0 +1,11 @@
+const express=require('express');
+const departmentController=require('../controller/DepartmentController');
+const protect = require('../middleware/Authmiddleware');
+const router=express.Router();
+router.post('/addDepartment',protect,departmentController.addDepartment);
+router.get('/getDepartment',departmentController.getDepartment);
+router.get('/editDepartment/:id',departmentController.editDepartment);
+router.post('/updateDepartment',protect,departmentController.updateDepartment);
+router.post('/deleteDepartment/:id',protect,departmentController.deleteDepartment);
+router.post('/searchDepartment',protect,departmentController.searchDepartment);
+module.exports=router;

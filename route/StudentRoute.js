@@ -1,0 +1,13 @@
+const express = require('express');
+const studentController = require('../controller/StudentController');
+const upload = require('../middleware/FileUpload');
+const protect = require('../middleware/Authmiddleware');
+const router = express.Router();
+router.post('/addStudent', protect, upload.single('image'), studentController.addStudent);
+router.get('/getstudent', studentController.getStudent);
+router.get('/editStudent/:id', protect, studentController.editStudent);
+router.post('/updateStudent', protect, upload.single('image'), studentController.updateStudent);
+router.post('/deleteStudent/:id', protect, studentController.deleteStudent);
+router.get('/getstudentInfo/:id', studentController.getStudentInfo);
+router.post('/searchStudent',protect,studentController.searchStudent);
+module.exports = router;

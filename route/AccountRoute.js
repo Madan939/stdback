@@ -1,0 +1,10 @@
+const express=require("express");
+const accountController=require('../controller/AccountsController');
+const protect = require("../middleware/Authmiddleware");
+const router=express.Router();
+router.post('/addAccountInfo',protect,accountController.addAccountInfo);
+router.get('/getAccount',protect,accountController.getAccount);
+router.get('/getOneAccount/:id',protect,accountController.getOneAccount);
+router.post('/updateAccount',protect,accountController.updateAccount);
+router.post('/searchAccount',protect,accountController.searchAccount);
+module.exports=router;

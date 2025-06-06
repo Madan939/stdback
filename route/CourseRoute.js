@@ -1,0 +1,13 @@
+const express=require('express');
+const courseController=require('../controller/CourseController');
+const upload=require('../middleware/FileUpload');
+const protect = require('../middleware/Authmiddleware');
+const router=express.Router();
+router.post('/addCourse',protect,upload.single('image'),courseController.addCourse);
+router.get('/getCourse',protect,courseController.getCourse);
+router.get('/editCourse/:id',protect,courseController.editCourse);
+router.post('/updateCourse',protect,upload.single('image'),courseController.updateCourse);
+router.post('/deleteCourse/:id',protect,courseController.deleteCourse);
+router.get('/getCourse/:id',courseController.getOneCourse);
+router.post('/searchCourse',protect,courseController.searchCourse);
+module.exports=router;
